@@ -8,7 +8,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.Objects;
+
+import static jakarta.persistence.CascadeType.*;
+
 @Entity
 @Table(name ="clients")
 @Getter
@@ -19,12 +23,11 @@ public class Client {
 
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "manager_id")
-    private int managerId;
-
     @Column(name = "status")
+    @Enumerated(EnumType.ORDINAL)
     private ClientStatus status;
 
     @Column(name = "tax_code")
@@ -51,18 +54,41 @@ public class Client {
     @Column(name = "update_at")
     private Timestamp updateAt;
 
-    @ManyToMany(mappedBy = "client", fetch = FetchType.LAZY)
-            @JoinColumn(name = "manager_id")
+    @OneToMany(mappedBy = "client", fetch = FetchType.LAZY,
+            orphanRemoval = true, cascade = {MERGE,PERSIST,REFRESH})
+    private List<Account> accounts;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "manager_id")
+    private Manager manager;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Client client)) return false;
-        return id == client.id && managerId == client.managerId && status == client.status && Objects.equals(taxCode, client.taxCode) && Objects.equals(firstName, client.firstName) && Objects.equals(lastName, client.lastName) && Objects.equals(email, client.email) && Objects.equals(address, client.address) && Objects.equals(phone, client.phone) && Objects.equals(createAt, client.createAt) && Objects.equals(updateAt, client.updateAt);
+        return id == client.id && Objects.equals(firstName, client.firstName) && Objects.equals(lastName, client.lastName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, managerId, status, taxCode, firstName, lastName, email, address, phone, createAt, updateAt);
+        return Objects.hash(id, firstName, lastName);
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "id=" + id +
+                ", status=" + status +
+                ", taxCode='" + taxCode + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", address='" + address + '\'' +
+                ", phone='" + phone + '\'' +
+                ", createAt=" + createAt +
+                ", updateAt=" + updateAt +
+                ", accounts=" + accounts +
+                ", manager=" + manager +
+                '}';
     }
 }

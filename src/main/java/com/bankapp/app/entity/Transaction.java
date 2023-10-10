@@ -5,13 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Objects;
-
-import static jakarta.persistence.CascadeType.*;
 
 @Entity
 @Table(name = "transactions")
@@ -22,13 +17,8 @@ import static jakarta.persistence.CascadeType.*;
 public class Transaction {
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    @Column(name = "debit_account_id")
-    private Account debitAccountId;
-
-    @Column(name = "credit_account_id")
-    private Account creditAccountId;
 
     @Column(name = "type")
     private int type;
@@ -42,33 +32,36 @@ public class Transaction {
     @Column(name = "create_at")
     private LocalDateTime createdAt;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "debit_account_id")
+    private Account debitAccountId;
 
-    @OneToMany(mappedBy = "transaction", fetch = FetchType.LAZY,
-            orphanRemoval = true, cascade = {MERGE, PERSIST, REFRESH})
-    private List<Account> accountList;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "credit_account_id")
+    private Account creditAccountId;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Transaction that)) return false;
-        return id == that.id && Objects.equals(debitAccountId, that.debitAccountId) && Objects.equals(creditAccountId, that.creditAccountId);
+        return id == that.id && type == that.type;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, debitAccountId, creditAccountId);
+        return Objects.hash(id, type);
     }
 
     @Override
     public String toString() {
         return "Transaction{" +
                 "id=" + id +
-                ", debitAccountId=" + debitAccountId +
-                ", creditAccountId=" + creditAccountId +
                 ", type=" + type +
                 ", amount=" + amount +
                 ", description='" + description + '\'' +
                 ", createdAt=" + createdAt +
+                ", debitAccountId=" + debitAccountId +
+                ", creditAccountId=" + creditAccountId +
                 '}';
     }
 }

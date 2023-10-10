@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.Objects;
 
 import static jakarta.persistence.CascadeType.*;
@@ -22,22 +23,21 @@ public class Product {
 
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    @Column(name = "manager_id")
-    private int managerId;
-
-    @Column(name = "product_limit")
-    private Integer productLimit;
 
     @Column(name = "name")
     private String name;
 
-    @Column(name = "status")
-    private ProductStatus status;
+    @Column(name = "product_limit")
+    private Integer productLimit;
 
     @Column(name = "currency_code")
     private String currencyCode;
+
+    @Column(name = "status")
+    @Enumerated(EnumType.ORDINAL)
+    private ProductStatus status;
 
     @Column(name = "create_ad")
     private Timestamp createdAt;
@@ -45,34 +45,38 @@ public class Product {
     @Column(name = "update_at")
     private Timestamp updateAt;
 
-    @OneToOne(cascade = {MERGE, PERSIST, REFRESH})
-    @JoinColumn(name = "id",referencedColumnName = "product_id")
-    private Product product;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "manager_id")
+    private Manager manager;
 
+    @OneToMany(mappedBy = "product",fetch = FetchType.LAZY,
+    orphanRemoval = true, cascade = {MERGE,PERSIST,REFRESH})
+    private List<Agreement> agreements;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Product product)) return false;
-        return id == product.id && managerId == product.managerId && Objects.equals(name, product.name);
+        return id == product.id && Objects.equals(name, product.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, managerId, name);
+        return Objects.hash(id, name);
     }
 
     @Override
     public String toString() {
         return "Product{" +
                 "id=" + id +
-                ", managerId=" + managerId +
-                ", productLimit=" + productLimit +
                 ", name='" + name + '\'' +
-                ", status=" + status +
+                ", productLimit=" + productLimit +
                 ", currencyCode='" + currencyCode + '\'' +
+                ", status=" + status +
                 ", createdAt=" + createdAt +
                 ", updateAt=" + updateAt +
+                ", manager=" + manager +
+                ", agreements=" + agreements +
                 '}';
     }
 }

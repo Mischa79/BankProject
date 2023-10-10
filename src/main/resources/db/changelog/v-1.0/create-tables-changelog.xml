@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="create accounts table" author="mischa_m">
+        <preConditions onFail="CONTINUE" onFailMessage="Table Account already exists">
+            <not>
+                <tableExists tableName="accounts"/>
+            </not>
+        </preConditions>
+        <createTable tableName="accounts">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="client_id" type="int"/>
+            <column name="name" type="varchar(100)"/>
+            <column name="type" type="int(1)"/>
+            <column name="account_status" type="int(1)"/>
+            <column name="balance" type="decimal(15.2)"/>
+            <column name="currency_code" type="int(2)"/>
+            <column name="create_at" type="timestamp"/>
+            <column name="update_at" type="timestamp"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="create agreements table" author="mischa_m">
+        <preConditions onFail="CONTINUE" onFailMessage="Table Agreement already exists">
+            <not>
+                <tableExists tableName="agreements"/>
+            </not>
+        </preConditions>
+        <createTable tableName="agreements">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="interest_rate" type="decimal(6.4)"/>
+            <column name="status" type="int(1)"/>
+            <column name="sum" type="decimal(15.2)"/>
+            <column name="create_at" type="timestamp"/>
+            <column name="update_at" type="timestamp"/>
+            <column name="account_id" type="int"/>
+            <column name="product_id" type="int"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="create clients table" author="mischa_m">
+        <preConditions onFail="CONTINUE" onFailMessage="Table Client already exists">
+            <not>
+                <tableExists tableName="clients"/>
+            </not>
+        </preConditions>
+        <createTable tableName="clients">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="status" type="int(1)"/>
+            <column name="tax_code" type="varchar(20)"/>
+            <column name="first_name" type="varchar(50)"/>
+            <column name="last_name" type="varchar(50)"/>
+            <column name="email" type="varchar(60)"/>
+            <column name="address" type="varchar(80)"/>
+            <column name="phone" type="varchar(20)"/>
+            <column name="create_at" type="timestamp"/>
+            <column name="update_at" type="timestamp"/>
+            <column name="manager_id" type="int"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="create managers table" author="mischa_m">
+        <preConditions onFail="CONTINUE" onFailMessage="Table Manager already exist">
+            <not>
+                <tableExists tableName="managers"/>
+            </not>
+        </preConditions>
+        <createTable tableName="managers">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="first_name" type="varchar(50)"/>
+            <column name="last_name" type="varchar(50)"/>
+            <column name="status" type="int(1)"/>
+            <column name="create_at" type="timestamp"/>
+            <column name="update_at" type="timestamp"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="create products table" author="mischa_m">
+        <preConditions onFail="CONTINUE" onFailMessage="Table Product already exist">
+            <not>
+                <tableExists tableName="products"/>
+            </not>
+        </preConditions>
+        <createTable tableName="products">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(70)"/>
+            <column name="product_limit" type="int"/>
+            <column name="currency_code" type="int(2)"/>
+            <column name="status" type="int(1)"/>
+            <column name="create_at" type="timestamp"/>
+            <column name="update_at" type="timestamp"/>
+            <column name="manager_id" type="int"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="create transactions table" author="mischa_m">
+        <preConditions onFail="CONTINUE" onFailMessage="Table Transaction already exist">
+            <not>
+                <tableExists tableName="transactions"/>
+            </not>
+        </preConditions>
+        <createTable tableName="transactions">
+            <column name="id" type="int">
+              <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="type" type="int(1)"/>
+            <column name="amount" type="decimal(2.4)"/>
+            <column name="description" type="varchar(255)"/>
+            <column name="create_at" type="timestamp"/>
+            <column name="debit_account_id" type="int"/>
+            <column name="credit_account_id" type="int"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

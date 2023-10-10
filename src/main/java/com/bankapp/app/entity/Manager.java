@@ -23,6 +23,7 @@ public class Manager {
 
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "first_name")
@@ -32,6 +33,7 @@ public class Manager {
     private String lastName;
 
     @Column(name = "status")
+    @Enumerated(EnumType.ORDINAL)
     private ManagerStatus status;
 
     @Column(name = "create_ad")
@@ -39,6 +41,11 @@ public class Manager {
 
     @Column(name = "update_ad")
     private Timestamp updateAt;
+
+    @OneToMany(mappedBy = "manager",fetch = FetchType.LAZY,
+            orphanRemoval = true, cascade = {MERGE, PERSIST, REFRESH})
+    private List<Client> clients;
+
 
     @OneToMany(mappedBy = "manager",fetch = FetchType.LAZY,
             orphanRemoval = true, cascade = {MERGE, PERSIST, REFRESH})
@@ -65,6 +72,8 @@ public class Manager {
                 ", status=" + status +
                 ", createdAt=" + createdAt +
                 ", updateAt=" + updateAt +
+                ", clients=" + clients +
+                ", productList=" + productList +
                 '}';
     }
 }
