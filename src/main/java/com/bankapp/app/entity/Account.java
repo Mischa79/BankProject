@@ -48,7 +48,7 @@ public class Account {
     @Column(name = "create_at")
     private Timestamp createAt;
 
-    @Column(name = " ")
+    @Column(name = "update_at")
     private Timestamp updateAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
