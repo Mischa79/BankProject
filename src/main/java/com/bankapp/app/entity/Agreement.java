@@ -9,9 +9,6 @@ import lombok.Setter;
 import java.sql.Timestamp;
 import java.util.Objects;
 
-import static jakarta.persistence.CascadeType.*;
-
-
 @Entity
 @Table(name = "agreements")
 @Getter
