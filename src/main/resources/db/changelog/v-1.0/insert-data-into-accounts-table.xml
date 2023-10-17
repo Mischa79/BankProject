@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="insert-data-into-accounts-table" author="mischa_m">
+        <insert tableName="accounts">
+            <column name="id" valueNumeric="1"/>
+            <column name="client_id" valueNumeric="123"/>
+            <column name="name" value="Account Name"/>
+            <column name="type" valueNumeric="1"/>
+            <column name="account_status" valueNumeric="1"/>
+            <column name="balance" valueNumeric="1000.00"/>
+            <column name="currency_code" valueNumeric="1"/>
+            <column name="create_at" valueDate="2023-10-15T12:00:00"/>
+            <column name="update_at" valueDate="2023-10-15T12:00:00"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

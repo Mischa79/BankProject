@@ -1,5 +1,6 @@
 package com.bankapp.app.entity;
 
+import com.bankapp.app.entity.enums.CurrencyCode;
 import com.bankapp.app.entity.enums.ProductStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -33,7 +34,8 @@ public class Product {
     private Integer productLimit;
 
     @Column(name = "currency_code")
-    private String currencyCode;
+    @Enumerated(EnumType.ORDINAL)
+    private CurrencyCode currencyCode;
 
     @Column(name = "status")
     @Enumerated(EnumType.ORDINAL)

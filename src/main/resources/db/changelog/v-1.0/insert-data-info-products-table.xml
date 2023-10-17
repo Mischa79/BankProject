@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="insert_data_into_products_table" author="mischa_m">
+        <insert tableName="products">
+            <column name="id" valueNumeric="1"/>
+            <column name="name" value="Geschenkgutschein"/>
+            <column name="product_limit" valueNumeric="1000"/>
+            <column name="currency_code" valueNumeric="1"/>
+            <column name="status" valueNumeric="1"/>
+            <column name="create_at" valueDate="2023-10-15T12:00:00"/>
+            <column name="update_at" valueDate="2023-10-15T12:00:00"/>
+            <column name="manager_id" valueNumeric="1"/>
+        </insert>
+    </changeSet>
+
+
+</databaseChangeLog>

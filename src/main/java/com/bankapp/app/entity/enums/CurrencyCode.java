@@ -6,8 +6,6 @@ public enum CurrencyCode {
     RUR(3),
     CAD(4);
 
-    CurrencyCode(int i){
-
-
+    CurrencyCode(int i) {
     }
 }
