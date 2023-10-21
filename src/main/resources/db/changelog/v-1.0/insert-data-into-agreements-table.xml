@@ -17,7 +17,30 @@
             <column name="product_id" valueNumeric="1"/>
         </insert>
     </changeSet>
-
+    <changeSet id="insert_data_into_agreements_table_participant2" author="participant2">
+        <insert tableName="agreements">
+            <column name="id" valueNumeric="2"/>
+            <column name="interest_rate" valueNumeric="0.03"/>
+            <column name="status" valueNumeric="1"/>
+            <column name="sum" valueNumeric="15000.00"/>
+            <column name="create_at" valueDate="2023-10-16T14:30:00"/>
+            <column name="update_at" valueDate="2023-10-16T14:30:00"/>
+            <column name="account_id" valueNumeric="2"/>
+            <column name="product_id" valueNumeric="2"/>
+        </insert>
+    </changeSet>
+    <changeSet id="insert_data_into_agreements_table_participant3" author="participant3">
+        <insert tableName="agreements">
+            <column name="id" valueNumeric="3"/>
+            <column name="interest_rate" valueNumeric="0.044"/>
+            <column name="status" valueNumeric="2"/>
+            <column name="sum" valueNumeric="18000.00"/>
+            <column name="create_at" valueDate="2023-10-16T14:30:00"/>
+            <column name="update_at" valueDate="2023-10-16T14:30:00"/>
+            <column name="account_id" valueNumeric="3"/>
+            <column name="product_id" valueNumeric="3"/>
+        </insert>
+    </changeSet>
 
 
 </databaseChangeLog>

@@ -18,5 +18,32 @@
             <column name="update_at" valueDate="2023-10-15T12:00:00"/>
         </insert>
     </changeSet>
+    <changeSet id="insert-data-into-accounts-table" author="second_participant">
+        <insert tableName="accounts">
+            <column name="id" valueNumeric="2"/>
+            <column name="client_id" valueNumeric="124"/>
+            <column name="name" value="Another Account"/>
+            <column name="type" valueNumeric="2"/>
+            <column name="account_status" valueNumeric="1"/>
+            <column name="balance" valueNumeric="1000.00"/>
+            <column name="currency_code" valueNumeric="2"/>
+            <column name="create_at" valueDate="2023-10-15T13:00:00"/>
+            <column name="update_at" valueDate="2023-10-15T13:00:00"/>
+        </insert>
+    </changeSet>
+    <changeSet id="insert-data-into-accounts-table_participant3" author="participant3">
+        <insert tableName="accounts">
+            <column name="id" valueNumeric="3"/>
+            <column name="client_id" valueNumeric="125"/>
+            <column name="name" value="Girokonto"/>
+            <column name="type" valueNumeric="1"/>
+            <column name="account_status" valueNumeric="1"/>
+            <column name="balance" valueNumeric="1000.00"/>
+            <column name="currency_code" valueNumeric="2"/>
+            <column name="create_at" valueDate="2023-10-15T13:00:00"/>
+            <column name="update_at" valueDate="2023-10-15T13:00:00"/>
+        </insert>
+    </changeSet>
+
 
 </databaseChangeLog>

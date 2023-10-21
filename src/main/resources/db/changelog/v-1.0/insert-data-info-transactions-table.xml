@@ -16,6 +16,28 @@
             <column name="credit_account_id" valueNumeric="3"/>
         </insert>
     </changeSet>
+    <changeSet id="insert_data_into_transactions_table_participant2" author="participant2">
+        <insert tableName="transactions">
+            <column name="id" valueNumeric="2"/>
+            <column name="type" valueNumeric="1"/>
+            <column name="amount" valueNumeric="10.000"/>
+            <column name="description" value="Transaction 2"/>
+            <column name="create_at" valueDate="2023-10-15T12:00:00"/>
+            <column name="debit_account_id" valueNumeric="2"/>
+            <column name="credit_account_id" valueNumeric="3"/>
+        </insert>
+    </changeSet>
+    <changeSet id="insert_data_into_transactions_table_participant3" author="participant3">
+        <insert tableName="transactions">
+            <column name="id" valueNumeric="3"/>
+            <column name="type" valueNumeric="1"/>
+            <column name="amount" valueNumeric="50.000"/>
+            <column name="description" value="Transaction 3"/>
+            <column name="create_at" valueDate="2023-10-15T12:00:00"/>
+            <column name="debit_account_id" valueNumeric="3"/>
+            <column name="credit_account_id" valueNumeric="4"/>
+        </insert>
+    </changeSet>
 
 
 </databaseChangeLog>

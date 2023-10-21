@@ -20,5 +20,110 @@
             <column name="manager_id" valueNumeric="2"/>
         </insert>
     </changeSet>
+    <changeSet id="insert_data_into_clients_table_participant2" author="participant2">
+        <insert tableName="clients">
+            <column name="id" valueNumeric="2"/>
+            <column name="status" valueNumeric="1"/>
+            <column name="tax_code" value="SecondTaxCode"/>
+            <column name="first_name" value="Ralf"/>
+            <column name="last_name" value="Kolb"/>
+            <column name="email" value="Kol@.com"/>
+            <column name="address" value="12 Stein St"/>
+            <column name="phone" value="777-123-4767"/>
+            <column name="create_at" valueDate="2023-10-15T12:00:00"/>
+            <column name="update_at" valueDate="2023-10-15T12:00:00"/>
+            <column name="manager_id" valueNumeric="2"/>
+        </insert>
+    </changeSet>
+    <changeSet id="insert_data_into_clients_table_participant3" author="participant3">
+        <insert tableName="clients">
+            <column name="id" valueNumeric="3"/>
+            <column name="status" valueNumeric="2"/>
+            <column name="tax_code" value="TaxCode"/>
+            <column name="first_name" value="Samantha"/>
+            <column name="last_name" value="Storsch"/>
+            <column name="email" value="Storsch@.com"/>
+            <column name="address" value="456 Longer St"/>
+            <column name="phone" value="3588-173-0232"/>
+            <column name="create_at" valueDate="2023-10-15T12:00:00"/>
+            <column name="update_at" valueDate="2023-10-15T12:00:00"/>
+            <column name="manager_id" valueNumeric="1"/>
+        </insert>
+    </changeSet>
+    <changeSet id="insert_data_into_clients_table_participant4" author="participant4">
+        <insert tableName="clients">
+            <column name="id" valueNumeric="4"/>
+            <column name="status" valueNumeric="2"/>
+            <column name="tax_code" value="TaxCode"/>
+            <column name="first_name" value="Bob"/>
+            <column name="last_name" value="Loch"/>
+            <column name="email" value="Bobloch@.com"/>
+            <column name="address" value="001 Individuele St"/>
+            <column name="phone" value="0101-003-0000"/>
+            <column name="create_at" valueDate="2023-10-15T12:00:00"/>
+            <column name="update_at" valueDate="2023-10-15T12:00:00"/>
+            <column name="manager_id" valueNumeric="1"/>
+        </insert>
+    </changeSet>
+    <changeSet id="insert_data_into_clients_table_participant5" author="participant5">
+        <insert tableName="clients">
+            <column name="id" valueNumeric="5"/>
+            <column name="status" valueNumeric="2"/>
+            <column name="tax_code" value="TaxCode"/>
+            <column name="first_name" value="Livia"/>
+            <column name="last_name" value="Limburg"/>
+            <column name="email" value="Livlimburg@.com"/>
+            <column name="address" value="781 Bach St"/>
+            <column name="phone" value="777-023-7800"/>
+            <column name="create_at" valueDate="2023-10-15T12:00:00"/>
+            <column name="update_at" valueDate="2023-10-15T12:00:00"/>
+            <column name="manager_id" valueNumeric="1"/>
+        </insert>
+    </changeSet>
+    <changeSet id="insert_data_into_clients_table_participant6" author="participant6">
+        <insert tableName="clients">
+            <column name="id" valueNumeric="6"/>
+            <column name="status" valueNumeric="1"/>
+            <column name="tax_code" value="TaxCode"/>
+            <column name="first_name" value="Lola"/>
+            <column name="last_name" value="Tolkinova"/>
+            <column name="email" value="Tollol@.com"/>
+            <column name="address" value="111 Atom St"/>
+            <column name="phone" value="777-022-7810"/>
+            <column name="create_at" valueDate="2023-10-15T12:00:00"/>
+            <column name="update_at" valueDate="2023-10-15T12:00:00"/>
+            <column name="manager_id" valueNumeric="3"/>
+        </insert>
+    </changeSet>
+    <changeSet id="insert_data_into_clients_table_participant7" author="participant7">
+        <insert tableName="clients">
+            <column name="id" valueNumeric="7"/>
+            <column name="status" valueNumeric="2"/>
+            <column name="tax_code" value="TaxCode"/>
+            <column name="first_name" value="Augustin"/>
+            <column name="last_name" value="Aston"/>
+            <column name="email" value="Aston@.com"/>
+            <column name="address" value="569 Alpen Alee St"/>
+            <column name="phone" value="777-331-8810"/>
+            <column name="create_at" valueDate="2023-10-15T12:00:00"/>
+            <column name="update_at" valueDate="2023-10-15T12:00:00"/>
+            <column name="manager_id" valueNumeric="4"/>
+        </insert>
+    </changeSet>
+    <changeSet id="insert_data_into_clients_table_participant8" author="participant8">
+        <insert tableName="clients">
+            <column name="id" valueNumeric="8"/>
+            <column name="status" valueNumeric="3"/>
+            <column name="tax_code" value="SuperTaxCode"/>
+            <column name="first_name" value="Sebastian"/>
+            <column name="last_name" value="Bluewolker"/>
+            <column name="email" value="Bluewolkerr@.com"/>
+            <column name="address" value="88 Gutrund St"/>
+            <column name="phone" value="888-881-8810"/>
+            <column name="create_at" valueDate="2023-10-15T12:00:00"/>
+            <column name="update_at" valueDate="2023-10-15T12:00:00"/>
+            <column name="manager_id" valueNumeric="5"/>
+        </insert>
+    </changeSet>
 
 </databaseChangeLog>
