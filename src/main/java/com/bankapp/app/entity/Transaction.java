@@ -33,11 +33,11 @@ public class Transaction {
     private LocalDateTime createdAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "debit_account_id")
+    @JoinColumn(name = "debit_account_id", referencedColumnName = "id")
     private Account debitAccountId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "credit_account_id")
+    @JoinColumn(name = "credit_account_id", referencedColumnName = "id")
     private Account creditAccountId;
 
     @Override

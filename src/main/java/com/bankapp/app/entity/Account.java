@@ -52,11 +52,11 @@ public class Account {
     private Timestamp updateAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "client_id")
+    @JoinColumn(name = "client_id", referencedColumnName = "id")
     private Client client;
 
     @OneToMany(mappedBy = "account", fetch = FetchType.LAZY,
-    orphanRemoval = true, cascade = {MERGE,PERSIST,REFRESH})
+   orphanRemoval = true, cascade = {MERGE,PERSIST,REFRESH})
     private List<Agreement> agreements;
 
     @OneToMany(mappedBy = "debitAccountId", fetch = FetchType.LAZY,

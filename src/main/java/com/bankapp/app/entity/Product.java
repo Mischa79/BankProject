@@ -48,8 +48,9 @@ public class Product {
     private Timestamp updateAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "manager_id")
+    @JoinColumn(name = "manager_id", referencedColumnName = "id")
     private Manager manager;
+
 
     @OneToMany(mappedBy = "product",fetch = FetchType.LAZY,
     orphanRemoval = true, cascade = {MERGE,PERSIST,REFRESH})

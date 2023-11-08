@@ -54,12 +54,13 @@ public class Client {
     @Column(name = "update_at")
     private Timestamp updateAt;
 
+
     @OneToMany(mappedBy = "client", fetch = FetchType.LAZY,
             orphanRemoval = true, cascade = {MERGE,PERSIST,REFRESH})
     private List<Account> accounts;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "manager_id")
+    @JoinColumn(name = "manager_id", referencedColumnName = "id")
     private Manager manager;
 
     @Override

@@ -39,11 +39,11 @@ public class Agreement {
     private Timestamp updateAt;
 
    @ManyToOne(fetch = FetchType.LAZY)
-   @JoinColumn(name = "product_id")
+   @JoinColumn(name = "product_id",referencedColumnName = "id")
    private Product product;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "account_id")
+    @JoinColumn(name = "account_id",referencedColumnName = "id")
     private Account account;
 
     @Override
