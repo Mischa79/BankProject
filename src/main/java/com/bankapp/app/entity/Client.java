@@ -63,6 +63,8 @@ public class Client {
     @JoinColumn(name = "manager_id", referencedColumnName = "id")
     private Manager manager;
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

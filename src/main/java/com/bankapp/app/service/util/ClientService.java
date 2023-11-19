@@ -1,9 +1,14 @@
 package com.bankapp.app.service.util;
 
-import ch.qos.logback.core.net.server.Client;
+
+import com.bankapp.app.entity.Client;
 
 public interface ClientService {
-    void post(String data);
+
 
     Client createClient(Client client);
+
+    Client getClientById(int id);
+
+    void deleteClient(int id);
 }
