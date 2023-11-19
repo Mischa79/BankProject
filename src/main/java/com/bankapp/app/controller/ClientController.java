@@ -31,7 +31,7 @@ public class ClientController {
     public ResponseEntity<ClientTestDto> createClient(@RequestBody ClientTestDto clientDto) {
         try {
             Client client = clientTestMapper.toEntity(clientDto);
-            Client createdClient = (Client) clientService.createClient(client);
+            Client createdClient = clientService.createClient(client);
             ClientTestDto createdClientDto = clientTestMapper.toDto(createdClient);
             return ResponseEntity.ok(createdClientDto);
         } catch (Exception e) {
