@@ -19,7 +19,7 @@ public class ClientController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Client> getClientById(@PathVariable("id") int id) {
-        Client client = (Client) clientService.getClientById(id);
+        Client client = clientService.getClientById(id);
         if (client != null) {
             return ResponseEntity.ok(client);
         } else {
