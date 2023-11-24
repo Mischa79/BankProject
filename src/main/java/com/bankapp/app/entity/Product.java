@@ -48,6 +48,14 @@ public class Product {
     private Timestamp updateAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "client.id", referencedColumnName = "id")
+    private Client client;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "transaction.id", referencedColumnName = "id")
+    private Transaction transaction;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "manager_id", referencedColumnName = "id")
     private Manager manager;
 

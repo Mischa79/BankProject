@@ -1,15 +1,17 @@
 package com.bankapp.app.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
+
+import static jakarta.persistence.CascadeType.*;
 
 @Entity
 @Table(name = "transactions")
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -31,6 +33,11 @@ public class Transaction {
 
     @Column(name = "create_at")
     private LocalDateTime createdAt;
+
+    @OneToMany(mappedBy = "transaction",fetch = FetchType.LAZY,
+            orphanRemoval = true, cascade = {MERGE, PERSIST, REFRESH})
+    private List<Product> productList;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "debit_account_id", referencedColumnName = "id")

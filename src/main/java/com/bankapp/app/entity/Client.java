@@ -54,6 +54,9 @@ public class Client {
     @Column(name = "update_at")
     private Timestamp updateAt;
 
+    @OneToMany(mappedBy = "client",fetch = FetchType.LAZY,
+            orphanRemoval = true, cascade = {MERGE, PERSIST, REFRESH})
+    private List<Product> productList;
 
     @OneToMany(mappedBy = "client", fetch = FetchType.LAZY,
             orphanRemoval = true, cascade = {MERGE,PERSIST,REFRESH})
